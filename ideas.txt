@@ -1,4 +1,4 @@
-Climication Ideas
+Climation Ideas
 
 4 different tabs
 
@@ -11,3 +11,9 @@ Leaderboard
 
 Settings
 
+<<<<<<< HEAD
+=======
+Learn
+
+Saved/Liked Resources
+>>>>>>> 93774d06700f8a78e492d3388620039e58f1d0bf

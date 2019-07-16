@@ -2,10 +2,12 @@ Climication Ideas
 
 4 different tabs
 
-Leaderboard
-
-Settings
 
 Learn
 
 Saved/Liked Resources
+
+Leaderboard
+
+Settings
+

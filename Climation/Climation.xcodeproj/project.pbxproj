@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */; };
-		AB7E2C7B22DE33B400D749B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* ViewController.swift */; };
+		AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */; };
 		AB7E2C7E22DE33B400D749B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7E2C7C22DE33B400D749B0 /* Main.storyboard */; };
 		AB7E2C8022DE33B600D749B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7E2C7F22DE33B600D749B0 /* Assets.xcassets */; };
 		AB7E2C8322DE33B600D749B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7E2C8122DE33B600D749B0 /* LaunchScreen.storyboard */; };
@@ -16,6 +16,9 @@
 		AB7E2C9922DE33B600D749B0 /* ClimationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C9822DE33B600D749B0 /* ClimationUITests.swift */; };
 		AB7E2CA722DE33EC00D749B0 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CA622DE33EC00D749B0 /* TabBar.swift */; };
 		AB7E2CA922DE388400D749B0 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CA822DE388400D749B0 /* extensions.swift */; };
+		AB7E2CAC22DE59B700D749B0 /* LikesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */; };
+		AB7E2CAE22DE59C300D749B0 /* ChartsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */; };
+		AB7E2CB022DE59CD00D749B0 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 /* Begin PBXFileReference section */
 		AB7E2C7522DE33B400D749B0 /* Climation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB7E2C7A22DE33B400D749B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
 		AB7E2C7D22DE33B400D749B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB7E2C7F22DE33B600D749B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB7E2C8222DE33B600D749B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		AB7E2C9A22DE33B600D749B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB7E2CA622DE33EC00D749B0 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AB7E2CA822DE388400D749B0 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesVC.swift; sourceTree = "<group>"; };
+		AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsVC.swift; sourceTree = "<group>"; };
+		AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +107,12 @@
 		AB7E2C7722DE33B400D749B0 /* Climation */ = {
 			isa = PBXGroup;
 			children = (
+				AB7E2CAA22DE581F00D749B0 /* ViewControllers */,
 				AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */,
-				AB7E2C7A22DE33B400D749B0 /* ViewController.swift */,
 				AB7E2C7C22DE33B400D749B0 /* Main.storyboard */,
 				AB7E2C7F22DE33B600D749B0 /* Assets.xcassets */,
 				AB7E2C8122DE33B600D749B0 /* LaunchScreen.storyboard */,
 				AB7E2C8422DE33B600D749B0 /* Info.plist */,
-				AB7E2CA622DE33EC00D749B0 /* TabBar.swift */,
 				AB7E2CA822DE388400D749B0 /* extensions.swift */,
 			);
 			path = Climation;
@@ -129,6 +134,18 @@
 				AB7E2C9A22DE33B600D749B0 /* Info.plist */,
 			);
 			path = ClimationUITests;
+			sourceTree = "<group>";
+		};
+		AB7E2CAA22DE581F00D749B0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB7E2CA622DE33EC00D749B0 /* TabBar.swift */,
+				AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */,
+				AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */,
+				AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */,
+				AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7E2CAC22DE59B700D749B0 /* LikesVC.swift in Sources */,
+				AB7E2CAE22DE59C300D749B0 /* ChartsVC.swift in Sources */,
 				AB7E2CA722DE33EC00D749B0 /* TabBar.swift in Sources */,
-				AB7E2C7B22DE33B400D749B0 /* ViewController.swift in Sources */,
+				AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */,
 				AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */,
 				AB7E2CA922DE388400D749B0 /* extensions.swift in Sources */,
+				AB7E2CB022DE59CD00D749B0 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

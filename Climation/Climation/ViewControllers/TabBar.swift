@@ -27,7 +27,7 @@ class TabBar: UIViewController
         gapBehindContainer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         //self.view.addSubview(gapBehindContainer)
         buttonContainer.frame = CGRect(x: 0, y: self.view.bounds.height - 50, width: self.view.bounds.width, height: 50)
-        buttonContainer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.8)
+        buttonContainer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.8)
         buttonContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         buttonContainer.layer.cornerRadius = 20
         //Middle Buttons
@@ -43,24 +43,24 @@ class TabBar: UIViewController
         lbButton.setImage(#imageLiteral(resourceName: "icons8-account-50"), for: .normal)
         lbButton.tag = 2
         lbButton.tntColor = #colorLiteral(red: 0.768171608, green: 0.8862745166, blue: 0.6753764657, alpha: 1)
-        lbButton.maskColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        lbButton.maskColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         lbButton.maskImage = #imageLiteral(resourceName: "icons8-account-50 (1)")
         lbButton.title = "Charts"
         lbButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         //Side Buttons
          learnButton.frame = CGRect(x: (self.view.bounds.width / 2) - 117.5, y: 10, width: 30, height: 30)
         settingsButton.frame = CGRect(x: (self.view.bounds.width / 2) + 95, y: 10, width: 30, height: 30)
-        learnButton.setImage(#imageLiteral(resourceName: "icons8-home-50"), for: .normal)
+        learnButton.setImage(#imageLiteral(resourceName: "icons8-europe-50"), for: .normal)
         learnButton.tag = 0
-        learnButton.tntColor = #colorLiteral(red: 0.6656051117, green: 0.5, blue: 1, alpha: 1)
-        learnButton.maskColor = #colorLiteral(red: 0.6181840791, green: 0.4446311448, blue: 0.9686274529, alpha: 1)
-        learnButton.maskImage = #imageLiteral(resourceName: "icons8-home-50 (1)")
-        learnButton.title = "Learn"
+        learnButton.tntColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        learnButton.maskColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        learnButton.maskImage = #imageLiteral(resourceName: "icons8-europe-50 (1)")
+        learnButton.title = "Home"
         learnButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         settingsButton.setImage(#imageLiteral(resourceName: "icons8-settings-50 (2)"), for: .normal)
         settingsButton.tag = 3
-        settingsButton.tntColor = #colorLiteral(red: 0.5931200493, green: 0.8716481825, blue: 0.9764705896, alpha: 1)
-        settingsButton.maskColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        settingsButton.tntColor = #colorLiteral(red: 0.6656051117, green: 0.5, blue: 1, alpha: 1)
+        settingsButton.maskColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         settingsButton.maskImage = #imageLiteral(resourceName: "icons8-settings-50 (3)")
         settingsButton.title = "Settings"
         settingsButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -81,7 +81,7 @@ class TabBar: UIViewController
          let vc = viewControllers[sender.tag]
         if let previousVC = prevVC
         {
-            vc.view.backgroundColor = previousVC.view.backgroundColor
+            vc.view.backgroundColor = sender.tntColor
             previousVC.willMove(toParent: nil)
             previousVC.view.removeFromSuperview()
             previousVC.removeFromParent()
@@ -114,17 +114,18 @@ class tabBarButton: UIButton
     func beginAnimation()
     {
         
-        label.text = title
-        label.frame = CGRect(x: 32, y: self.frame.minY - 7.5, width: 85, height: 35)
-        label.font = UIFont(name: "AvenirNext-Bold", size: 15.0)
-        label.textColor = maskColor
-        label.adjustsFontSizeToFitWidth = true
-        
+       
         view.frame = CGRect(x: -5, y: -7.5, width: 0, height: self.frame.height + 15)
         self.addSubview(self.view)
         self.sendSubviewToBack(self.view)
         view.layer.cornerRadius = view.bounds.height / 2
         view.backgroundColor = tntColor.withAlphaComponent(0.6)
+        
+        label.text = title
+        label.frame = CGRect(x: 32, y: view.frame.minY + 7.5, width: 85, height: 35)
+        label.font = UIFont(name: "Helvetica-Bold", size: 15.0)
+        label.textColor = maskColor
+        label.adjustsFontSizeToFitWidth = true
         
         UIView.animate(withDuration: 0.2, animations: {
             

@@ -18,14 +18,28 @@ class SettingsVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let tempView = UIView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: 0))
-        tempView.backgroundColor = #colorLiteral(red: 0.5931200493, green: 0.8716481825, blue: 0.9764705896, alpha: 1).withAlphaComponent(0.6)
+        let tempView = UIView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: self.view.bounds.height))
+        let ga = getGradientBackground()
+        tempView.layer.insertSublayer(ga, at:0)
         self.view.addSubview(tempView)
-        UIView.animate(withDuration: 0.2, animations: {
+
+        UIView.animate(withDuration: 0.0, animations: {
             tempView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: { (finished: Bool) in
-            self.view.backgroundColor = #colorLiteral(red: 0.5931200493, green: 0.8716481825, blue: 0.9764705896, alpha: 1).withAlphaComponent(0.6)
             tempView.removeFromSuperview()
+            self.view.layer.insertSublayer(ga, at:0)
         })
+    }
+    
+    func getGradientBackground()-> CAGradientLayer {
+        let colorTop =  #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).cgColor
+        let colorBottom = #colorLiteral(red: 0.6656051117, green: 0.5, blue: 1, alpha: 1).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        return gradientLayer
+       
     }
 }

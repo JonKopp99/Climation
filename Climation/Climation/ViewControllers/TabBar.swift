@@ -70,6 +70,15 @@ class TabBar: UIViewController
         buttonPressed(learnButton)
     }
     
+    func notOnMainpage()
+    {
+        prevVC = nil
+        if let prevB = prevButton
+        {
+            prevB.stopAnimation()
+            
+        }
+    }
     @objc func buttonPressed(_ sender: tabBarButton)
     {
         if let b = prevButton

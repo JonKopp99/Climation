@@ -15,6 +15,7 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var topics = [HomeTopic]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
 //        self.addChild(tabBar)
 //        self.view.addSubview(tabBar.view)
@@ -65,23 +66,17 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! HomeCell
         print(cell.nameLabel.text!)
-        dropCellsAnimation(title: cell.nameLabel.text!)
+        let vc = TopicVC()
+        vc.headerImage = cell.backImage.image!
+        vc.headerTitle = cell.nameLabel.text!
+        let animation = CATransition()
+        animation.type = .push
+        animation.subtype = .fromTop
+        animation.duration = 0.3
+        self.view.window!.layer.add(animation, forKey: nil)
         
-        
-    }
-    func dropCellsAnimation(title: String)
-    {
-        let cells = tableView.visibleCells as! [HomeCell]
-        for cell in cells
-        {
-            if(cell.nameLabel.text! != title)
-            {
-                cell.shake()
-            UIView.animate(withDuration: 0.3, animations: {
-                cell.alpha = 0.0
-                })
-            }
-        }
+        self.present(vc, animated: false, completion: nil)
+   
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count

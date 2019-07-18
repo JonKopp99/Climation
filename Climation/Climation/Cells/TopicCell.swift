@@ -1,16 +1,14 @@
 //
-//  HomeCell.swift
+//  TopicCell.swift
 //  Climation
 //
-//  Created by Jonathan Kopp on 7/17/19.
+//  Created by Jonathan Kopp on 7/18/19.
 //  Copyright © 2019 Jonathan Kopp. All rights reserved.
 //
 
-
-
-import UIKit
 import Foundation
-class HomeCell: UITableViewCell{
+import UIKit
+class TopicCell: UITableViewCell{
     
     var backImage = UIImageView()
     var nameLabel = UILabel()
@@ -30,6 +28,7 @@ class HomeCell: UITableViewCell{
     
     override func layoutSubviews() {
         self.layer.cornerRadius = self.frame.height / 4
+        
         backgroundColor = .clear
         
         backImage.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
@@ -48,7 +47,6 @@ class HomeCell: UITableViewCell{
         nameLabel.shadowOffset = CGSize(width: -2, height: 2)
         nameLabel.adjustsFontSizeToFitWidth = true
         addSubview(nameLabel)
-        
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

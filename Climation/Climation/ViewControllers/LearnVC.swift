@@ -8,9 +8,11 @@
 
 import UIKit
 
-class LearnVC: UIViewController {
-   // var tabBar = TabBar()
-
+class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+   
+   var hasAnimated = Bool()
+   var tableView = UITableView()
+    var topics = [HomeTopic]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,10 +33,20 @@ class LearnVC: UIViewController {
             tempView.removeFromSuperview()
             self.view.layer.insertSublayer(ga, at:0)
         })
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - 50)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        self.view.addSubview(tableView)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-      
+        dummyData()
+        hasAnimated = false
+        self.tableView.reloadData()
     }
 
     func getGradientBackground()->CAGradientLayer{
@@ -48,6 +60,99 @@ class LearnVC: UIViewController {
         
         return gradientLayer
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! HomeCell
+        print(cell.nameLabel.text!)
+        dropCellsAnimation(title: cell.nameLabel.text!)
+        
+        
+    }
+    func dropCellsAnimation(title: String)
+    {
+        let cells = tableView.visibleCells as! [HomeCell]
+        for cell in cells
+        {
+            if(cell.nameLabel.text! != title)
+            {
+                cell.shake()
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.alpha = 0.0
+                })
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return topics.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.bounds.height * 0.2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = HomeCell()
+        cell.selectionStyle = .none
+        cell.backImage.image = topics[indexPath.row].backImg
+        cell.nameLabel.text = topics[indexPath.row].name
+        return cell
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! HomeCell
+        if(hasAnimated){return}
+        cell.transform = CGAffineTransform(translationX: tableView.bounds.width, y: 0)
+        cell.backImage.alpha = 0.2
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.1 * Double(indexPath.row),
+            options: [.curveEaseInOut],
+            animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0)
+                cell.backImage.alpha = 0.8
+        })
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == topics.count - 1)
+        {
+            hasAnimated = true
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        topics = [HomeTopic]()
+        tableView.reloadData()
+    }
+    
+    func dummyData()
+    {
+        var newTopic = HomeTopic()
+        newTopic.name = "Ocean"
+        newTopic.backImg = #imageLiteral(resourceName: "ocean")
+        self.topics.append(newTopic)
+        
+        newTopic = HomeTopic()
+        newTopic.name = "Rain Forest"
+        newTopic.backImg = #imageLiteral(resourceName: "RainForest")
+        self.topics.append(newTopic)
+        
+        newTopic = HomeTopic()
+        newTopic.name = "Wild Life"
+        newTopic.backImg = #imageLiteral(resourceName: "WildLife")
+        self.topics.append(newTopic)
+        
+        newTopic = HomeTopic()
+        newTopic.name = "Regional"
+        newTopic.backImg = #imageLiteral(resourceName: "regioncity")
+        self.topics.append(newTopic)
+        
+        newTopic = HomeTopic()
+        newTopic.name = "Glacier"
+        newTopic.backImg = #imageLiteral(resourceName: "iceberg")
+        self.topics.append(newTopic)
+        
+        newTopic = HomeTopic()
+        newTopic.name = "Other"
+        newTopic.backImg = #imageLiteral(resourceName: "otherlightning")
+        self.topics.append(newTopic)
     }
 }
 

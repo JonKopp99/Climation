@@ -19,6 +19,8 @@
 		AB7E2CAC22DE59B700D749B0 /* LikesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */; };
 		AB7E2CAE22DE59C300D749B0 /* ChartsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */; };
 		AB7E2CB022DE59CD00D749B0 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */; };
+		AB7E2CB222DF905A00D749B0 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CB122DF905A00D749B0 /* HomeCell.swift */; };
+		AB7E2CB622DFAC4E00D749B0 /* HomeTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2CB522DFAC4E00D749B0 /* HomeTopic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesVC.swift; sourceTree = "<group>"; };
 		AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsVC.swift; sourceTree = "<group>"; };
 		AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		AB7E2CB122DF905A00D749B0 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		AB7E2CB522DFAC4E00D749B0 /* HomeTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 		AB7E2C7722DE33B400D749B0 /* Climation */ = {
 			isa = PBXGroup;
 			children = (
+				AB7E2CB422DFAC3600D749B0 /* Objects */,
+				AB7E2CB322DF906000D749B0 /* Cells */,
 				AB7E2CAA22DE581F00D749B0 /* ViewControllers */,
 				AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */,
 				AB7E2C7C22DE33B400D749B0 /* Main.storyboard */,
@@ -146,6 +152,22 @@
 				AB7E2CAF22DE59CD00D749B0 /* SettingsVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AB7E2CB322DF906000D749B0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB7E2CB122DF905A00D749B0 /* HomeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AB7E2CB422DFAC3600D749B0 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AB7E2CB522DFAC4E00D749B0 /* HomeTopic.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,8 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7E2CB622DFAC4E00D749B0 /* HomeTopic.swift in Sources */,
 				AB7E2CAC22DE59B700D749B0 /* LikesVC.swift in Sources */,
 				AB7E2CAE22DE59C300D749B0 /* ChartsVC.swift in Sources */,
+				AB7E2CB222DF905A00D749B0 /* HomeCell.swift in Sources */,
 				AB7E2CA722DE33EC00D749B0 /* TabBar.swift in Sources */,
 				AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */,
 				AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */,

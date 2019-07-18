@@ -45,6 +45,8 @@ class HomeCell: UITableViewCell{
         nameLabel.font = UIFont(name: "Helvetica-Bold", size: 50.0)
         nameLabel.textAlignment = .center
         nameLabel.textColor = .white
+        nameLabel.shadowColor = .black
+        nameLabel.shadowOffset = CGSize(width: -2, height: 2)
         nameLabel.adjustsFontSizeToFitWidth = true
         addSubview(nameLabel)
     }

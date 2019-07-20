@@ -15,10 +15,6 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var topics = [HomeTopic]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
-//        self.addChild(tabBar)
-//        self.view.addSubview(tabBar.view)
         print("LearnVC")
         let backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         backImage.image = #imageLiteral(resourceName: "DSC100373704")
@@ -74,6 +70,7 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         animation.subtype = .fromTop
         animation.duration = 0.3
         self.view.window!.layer.add(animation, forKey: nil)
+        
         
         self.present(vc, animated: false, completion: nil)
    

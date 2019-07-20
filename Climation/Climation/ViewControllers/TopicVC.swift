@@ -33,9 +33,17 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.view.layer.insertSublayer(ga, at:0)
         })
         
+        
+        let navbar = NavBarHeaderView()
+        navbar.headertitle = self.headerTitle
+        navbar.shadow = true
+        navbar.btnMask = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        addChild(navbar)
+        self.view.addSubview(navbar.view)
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - 50)
+        tableView.frame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: self.view.bounds.height - ( self.view.bounds.height * 0.1))
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         self.view.addSubview(tableView)
@@ -47,7 +55,7 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let headerview = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height * 0.3 + 10))
         
         let backImage = UIImageView()
-        backImage.frame = CGRect(x: 5, y: 30, width: self.view.bounds.width - 10, height: self.view.bounds.height * 0.3 - 30)
+        backImage.frame = CGRect(x: 5, y: 0, width: self.view.bounds.width - 10, height: self.view.bounds.height * 0.3)
         backImage.image = headerImage
         backImage.layer.cornerRadius = (self.view.bounds.height * 0.3 - 30) / 4
         backImage.layer.masksToBounds = true
@@ -55,23 +63,6 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         backImage.contentMode = .scaleAspectFill
         backImage.alpha = 0.9
         headerview.addSubview(backImage)
-        
-        let nameLabel = UILabel()
-        nameLabel.frame = CGRect(x: 5, y: 0, width: self.view.bounds.width - 10, height: 30)
-        nameLabel.font = UIFont(name: "Helvetica-Bold", size: 27.0)
-        nameLabel.textAlignment = .center
-        nameLabel.textColor = .white
-        nameLabel.shadowColor = .black
-        nameLabel.shadowOffset = CGSize(width: -2, height: 2)
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.text = self.headerTitle
-        headerview.addSubview(nameLabel)
-        
-        let backButton = UIButton()
-        backButton.frame = CGRect(x: 15, y: 0, width: 25, height: 25)
-        backButton.setImage(#imageLiteral(resourceName: "icons8-undo-52"), for: .normal)
-        backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
-        headerview.addSubview(backButton)
         
         tableView.tableHeaderView = headerview
         tableView.reloadData()

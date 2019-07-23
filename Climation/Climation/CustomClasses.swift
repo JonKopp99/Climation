@@ -16,6 +16,7 @@ class NavBarHeaderView: UIViewController
     var txtColor: UIColor?
     var btnMask: UIColor?
     var shadow: Bool?
+    var buttonDisabled: Bool?
     
     override func viewDidLoad() {
         let navView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height * 0.1))
@@ -44,8 +45,12 @@ class NavBarHeaderView: UIViewController
         if let bc = btnMask{
             backbutton.setImage(#imageLiteral(resourceName: "icons8-chevron-left-50").mask(with: bc), for: .normal)
         }
-        backbutton.addTarget(self, action:#selector(self.backPressed), for: .touchUpInside)
         navView.addSubview(backbutton)
+        backbutton.addTarget(self, action:#selector(self.backPressed), for: .touchUpInside)
+        if let buttonState = buttonDisabled
+        {
+            if(buttonState){backbutton.removeFromSuperview()}
+        }
         self.view.addSubview(navView)
     }
 

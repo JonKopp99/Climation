@@ -20,13 +20,16 @@ class TabBar: UIViewController
     var viewControllers = [LearnVC(), LikesVC(), ChartsVC(), SettingsVC()]
     var prevButton: tabBarButton?
     var prevVC: UIViewController?
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let bottom = self.view.safeAreaInsets.bottom
+        buttonContainer.frame = CGRect(x: 0, y: self.view.bounds.height - (50 + bottom), width: self.view.bounds.width, height: (50 + bottom))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Tab Bar was loaded")
-        let gapBehindContainer = UIView(frame: CGRect(x: 0, y: self.view.bounds.height - 20, width: self.view.bounds.width, height: 20))
-        gapBehindContainer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        //self.view.addSubview(gapBehindContainer)
-        buttonContainer.frame = CGRect(x: 0, y: self.view.bounds.height - 50, width: self.view.bounds.width, height: 50)
+        
         buttonContainer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.8)
         buttonContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         buttonContainer.layer.cornerRadius = 20

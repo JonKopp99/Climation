@@ -21,17 +21,9 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         backImage.image = #imageLiteral(resourceName: "DSC100373704")
         backImage.alpha = 0.4
-        let tempView = UIView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: self.view.bounds.height))
         let ga = self.getGradientBackground()
-        tempView.layer.insertSublayer(ga, at:0)
-        self.view.addSubview(tempView)
         self.view.addSubview(backImage)
-        UIView.animate(withDuration: 0.0, animations: {
-            tempView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-        }, completion: { (finished: Bool) in
-            tempView.removeFromSuperview()
-            self.view.layer.insertSublayer(ga, at:0)
-        })
+        self.view.layer.insertSublayer(ga, at:0)
         
         
         let navbar = NavBarHeaderView()
@@ -57,7 +49,7 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let backImage = UIImageView()
         backImage.frame = CGRect(x: 5, y: 0, width: self.view.bounds.width - 10, height: self.view.bounds.height * 0.3)
         backImage.image = headerImage
-        backImage.layer.cornerRadius = (self.view.bounds.height * 0.3 - 30) / 4
+        backImage.layer.cornerRadius = (self.view.bounds.height * 0.3 - 30) * 0.1
         backImage.layer.masksToBounds = true
         backImage.clipsToBounds = true
         backImage.contentMode = .scaleAspectFill

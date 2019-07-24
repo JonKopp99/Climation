@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */; };
 		AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */; };
 		AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */; };
 		AB7E2C7E22DE33B400D749B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7E2C7C22DE33B400D749B0 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLDTABBAR.swift; sourceTree = "<group>"; };
 		AB7E2C7522DE33B400D749B0 /* Climation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				AB7E2C8422DE33B600D749B0 /* Info.plist */,
 				AB7E2CA822DE388400D749B0 /* extensions.swift */,
 				AB7E2CBB22E0F35500D749B0 /* CustomClasses.swift */,
+				AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */,
 			);
 			path = Climation;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */,
 				AB7E2CA922DE388400D749B0 /* extensions.swift in Sources */,
 				AB7E2CB022DE59CD00D749B0 /* SettingsVC.swift in Sources */,
+				AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */,
 				AB7E2CBC22E0F35500D749B0 /* CustomClasses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

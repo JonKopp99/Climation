@@ -15,7 +15,6 @@ class TabBar: UIViewController
     var learnButton = tabBarButton()
     var savedButton = tabBarButton()
     var lbButton = tabBarButton()
-    var settingsButton = tabBarButton()
     var viewControllerStrings = ["Home","Liked","Leaderboard","Settings"]
     var viewControllers = [LearnVC(), LikesVC(), ChartsVC(), SettingsVC()]
     var prevButton: tabBarButton?
@@ -23,7 +22,11 @@ class TabBar: UIViewController
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let bottom = self.view.safeAreaInsets.bottom
+        var bottom = self.view.safeAreaInsets.bottom
+        if bottom == 0
+        {
+            bottom = 10
+        }
         buttonContainer.frame = CGRect(x: 0, y: self.view.bounds.height - (50 + bottom), width: self.view.bounds.width, height: (50 + bottom))
     }
     override func viewDidLoad() {
@@ -34,8 +37,8 @@ class TabBar: UIViewController
         buttonContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         buttonContainer.layer.cornerRadius = 20
         //Middle Buttons
-        savedButton.frame = CGRect(x: (self.view.bounds.width / 2) - 47.5, y: 10, width: 30, height: 30)
-        lbButton.frame = CGRect(x: (self.view.bounds.width / 2) + 22.5, y: 10, width: 30, height: 30)
+        savedButton.frame = CGRect(x: (self.view.bounds.width / 2) - 15, y: 10, width: 30, height: 30)
+        lbButton.frame = CGRect(x: self.view.bounds.width - 80, y: 10, width: 30, height: 30)
         savedButton.setImage(#imageLiteral(resourceName: "icons8-heart-50 (1)"), for: .normal)
         savedButton.tag = 1
         savedButton.tntColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
@@ -51,8 +54,7 @@ class TabBar: UIViewController
         lbButton.title = "Charts"
         lbButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         //Side Buttons
-         learnButton.frame = CGRect(x: (self.view.bounds.width / 2) - 117.5, y: 10, width: 30, height: 30)
-        settingsButton.frame = CGRect(x: (self.view.bounds.width / 2) + 95, y: 10, width: 30, height: 30)
+        learnButton.frame = CGRect(x: 40, y: 10, width: 30, height: 30)
         learnButton.setImage(#imageLiteral(resourceName: "icons8-europe-50"), for: .normal)
         learnButton.tag = 0
         learnButton.tntColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -60,15 +62,8 @@ class TabBar: UIViewController
         learnButton.maskImage = #imageLiteral(resourceName: "icons8-europe-50 (1)")
         learnButton.title = "Home"
         learnButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        settingsButton.setImage(#imageLiteral(resourceName: "icons8-settings-50 (2)"), for: .normal)
-        settingsButton.tag = 3
-        settingsButton.tntColor = #colorLiteral(red: 0.6656051117, green: 0.5, blue: 1, alpha: 1)
-        settingsButton.maskColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-        settingsButton.maskImage = #imageLiteral(resourceName: "icons8-settings-50 (3)")
-        settingsButton.title = "Settings"
-        settingsButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
-        self.buttonContainer.addViews(views: [savedButton,lbButton,learnButton,settingsButton])
+        self.buttonContainer.addViews(views: [savedButton,lbButton,learnButton])
         self.view.addSubview(buttonContainer)
         buttonPressed(learnButton)
     }
@@ -127,39 +122,31 @@ class tabBarButton: UIButton
     {
         
        
-        view.frame = CGRect(x: -5, y: -7.5, width: 0, height: self.frame.height + 15)
-        self.addSubview(self.view)
-        self.sendSubviewToBack(self.view)
-        view.layer.cornerRadius = view.bounds.height / 2
-        view.backgroundColor = tntColor.withAlphaComponent(0.6)
         
         label.text = title
-        label.frame = CGRect(x: 32, y: view.frame.minY + 7.5, width: 85, height: 35)
+        label.frame = CGRect(x: -10, y: view.frame.maxY + 25, width: self.frame.width + 20, height: 0)
         label.font = UIFont(name: "Helvetica-Bold", size: 15.0)
         label.textColor = maskColor
         label.adjustsFontSizeToFitWidth = true
-        
+        label.textAlignment = .center
+        self.oldImage = ((self.imageView?.image!)!)
+        self.setImage(self.maskImage.mask(with: self.maskColor), for: .normal)
+        self.addSubview(self.label)
         UIView.animate(withDuration: 0.2, animations: {
-            
-            self.view.frame = CGRect(x: -5, y: -7.5, width: ((self.label.frame.width + self.frame.width) - 5 ), height: self.frame.height + 15)
-            self.oldImage = ((self.imageView?.image!)!)
-            self.setImage(self.maskImage.mask(with: self.maskColor), for: .normal)
-            self.frame = CGRect(x: self.frame.minX - 35, y: self.frame.minY, width: self.frame.width, height: self.frame.height)
-            
+            self.frame = CGRect(x: self.frame.minX - 2.5, y: self.frame.minY - 2.5, width: self.frame.width + 5, height: self.frame.height + 5)
+            self.label.frame = CGRect(x: -10, y: self.view.frame.maxY + 25, width: self.frame.width + 20, height: 35)
         }, completion: { (finished: Bool) in
-            self.addSubview(self.label)
+            
         })
     }
     
     func stopAnimation()
     {
          UIView.animate(withDuration: 0.2, animations: {
-            self.frame = CGRect(x: self.frame.minX + 35, y: self.frame.minY, width: self.frame.width, height: self.frame.height)
-            self.view.frame = CGRect(x: -5, y: -7.5, width: 0, height: self.frame.height + 15)
+            self.frame = CGRect(x: self.frame.minX + 2.5, y: self.frame.minY + 2.5, width: self.frame.width - 5, height: self.frame.height - 5)
             self.label.removeFromSuperview()
          }, completion: { (finished: Bool) in
             self.setImage(self.oldImage, for: .normal)
-            self.view.removeFromSuperview()
         })
     }
 }

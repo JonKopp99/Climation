@@ -56,6 +56,13 @@ class NavBarHeaderView: UIViewController
 
     @objc func backPressed()
     {
-        self.dismiss(animated: true, completion: nil)
+        let animation = CATransition()
+        animation.type = .push
+        animation.subtype = .fromLeft
+        animation.duration = 0.3
+        self.view.window!.layer.add(animation, forKey: nil)
+        
+        //add slide animation from theleft
+        self.dismiss(animated: false, completion: nil)
     }
 }

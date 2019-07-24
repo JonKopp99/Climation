@@ -20,6 +20,13 @@ class SettingsVC: UIViewController {
         let ga = getGradientBackground()
         self.view.addSubview(backImage)
         self.view.layer.insertSublayer(ga, at:0)
+        
+        let navbar = NavBarHeaderView()
+        navbar.headertitle = "Settings"
+        navbar.shadow = true
+        navbar.btnMask = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        addChild(navbar)
+        self.view.addSubview(navbar.view)
        
     }
     

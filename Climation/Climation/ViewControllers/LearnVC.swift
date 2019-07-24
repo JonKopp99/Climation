@@ -16,7 +16,11 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let bottom = self.view.safeAreaInsets.bottom
+        var bottom = self.view.safeAreaInsets.bottom
+        if bottom == 0
+        {
+            bottom = 10
+        }
         tableView.frame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: self.view.bounds.height - (50 + bottom + (self.view.bounds.height * 0.1)))
     }
     

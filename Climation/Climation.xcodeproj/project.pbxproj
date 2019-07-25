@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2C25C1FF79EBC0DEF04B606C /* Pods_ClimationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AA4343C003903C96C0B533 /* Pods_ClimationUITests.framework */; };
 		58D41359A961DF591AD6EF49 /* Pods_Climation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB2BD3702331902FEFCCB40 /* Pods_Climation.framework */; };
 		971C63D9791D18C4EAD28744 /* Pods_ClimationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191F5C28C7176EB247D0C739 /* Pods_ClimationTests.framework */; };
+		AB0EA55A22EA73B90090BB7B /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA55922EA73B90090BB7B /* Topic.swift */; };
 		AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */; };
 		AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */; };
 		AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */; };
@@ -55,6 +56,7 @@
 		962EFE663D817D942242960C /* Pods-ClimationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClimationTests.release.xcconfig"; path = "Target Support Files/Pods-ClimationTests/Pods-ClimationTests.release.xcconfig"; sourceTree = "<group>"; };
 		98B3E2B90456ABC37C977CE4 /* Pods-Climation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Climation.release.xcconfig"; path = "Target Support Files/Pods-Climation/Pods-Climation.release.xcconfig"; sourceTree = "<group>"; };
 		AA2E7078525C1943B9F1C554 /* Pods-ClimationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClimationUITests.release.xcconfig"; path = "Target Support Files/Pods-ClimationUITests/Pods-ClimationUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AB0EA55922EA73B90090BB7B /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLDTABBAR.swift; sourceTree = "<group>"; };
 		AB7E2C7522DE33B400D749B0 /* Climation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7E2CB522DFAC4E00D749B0 /* HomeTopic.swift */,
+				AB0EA55922EA73B90090BB7B /* Topic.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -219,7 +222,6 @@
 				5FA76365314F4B3BEA97E4E5 /* Pods-ClimationUITests.debug.xcconfig */,
 				AA2E7078525C1943B9F1C554 /* Pods-ClimationUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -457,6 +459,7 @@
 				AB7E2CB022DE59CD00D749B0 /* SettingsVC.swift in Sources */,
 				AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */,
 				AB7E2CBC22E0F35500D749B0 /* CustomClasses.swift in Sources */,
+				AB0EA55A22EA73B90090BB7B /* Topic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

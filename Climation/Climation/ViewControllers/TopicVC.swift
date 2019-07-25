@@ -13,6 +13,7 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var headerImage = UIImage()
     var headerTitle = String()
     var tableView = UITableView()
+    var topics = [Topic]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,6 +26,7 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(backImage)
         self.view.layer.insertSublayer(ga, at:0)
         
+        dummyData()
         
         let navbar = NavBarHeaderView()
         navbar.headertitle = self.headerTitle
@@ -82,23 +84,70 @@ class TopicVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return gradientLayer
         
     }
-    func dropCellsAnimation(title: String)
-    {
 
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return topics.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        
         return self.view.bounds.height * 0.2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TopicCell()
         cell.selectionStyle = .none
-        cell.backImage.image = #imageLiteral(resourceName: "b2vql3c")
-        cell.nameLabel.text = "Test"
+        cell.backImage.image = topics[indexPath.row].backImg
+        cell.nameLabel.text = topics[indexPath.row].name
+        cell.type = topics[indexPath.row].type!
+        cell.time = topics[indexPath.row].time!
         return cell
+    }
+    
+    func dummyData()
+    {
+        var newTopic = Topic()
+        newTopic.name = "Ocean"
+        newTopic.backImg = #imageLiteral(resourceName: "ocean")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
+        
+        newTopic = Topic()
+        newTopic.name = "Rain Forest"
+        newTopic.backImg = #imageLiteral(resourceName: "RainForest")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
+        
+        newTopic = Topic()
+        newTopic.name = "Wild Life"
+        newTopic.backImg = #imageLiteral(resourceName: "WildLife")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
+        
+        newTopic = Topic()
+        newTopic.name = "Regional"
+        newTopic.backImg = #imageLiteral(resourceName: "regioncity")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
+        
+        newTopic = Topic()
+        newTopic.name = "Glacier"
+        newTopic.backImg = #imageLiteral(resourceName: "iceberg")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
+        
+        newTopic = Topic()
+        newTopic.name = "Other"
+        newTopic.backImg = #imageLiteral(resourceName: "otherlightning")
+        newTopic.type = "article"
+        newTopic.time = 5
+        self.topics.append(newTopic)
     }
 }
 

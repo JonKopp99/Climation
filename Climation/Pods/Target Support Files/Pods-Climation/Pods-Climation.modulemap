@@ -1,0 +1,6 @@
+framework module Pods_Climation {
+  umbrella header "Pods-Climation-umbrella.h"
+
+  export *
+  module * { export * }
+}

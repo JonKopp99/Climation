@@ -79,6 +79,7 @@ class TabBar: UIViewController
     }
     @objc func buttonPressed(_ sender: tabBarButton)
     {
+        if(viewControllers[sender.tag] != prevVC){
         if let b = prevButton
         {
             b.stopAnimation()
@@ -102,6 +103,7 @@ class TabBar: UIViewController
         vc.didMove(toParent: self)
         prevVC = viewControllers[sender.tag]
         prevButton = sender
+        }
     }
 }
 

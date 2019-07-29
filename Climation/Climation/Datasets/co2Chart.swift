@@ -17,16 +17,22 @@ class co2Chart: UIView
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        lineChartView.frame = CGRect(x: 5, y: 0, width: bounds.width - 10, height: bounds.height)
+        let label = UILabel(frame: CGRect(x:20, y: 0, width: bounds.width - 40, height: 30))
+        label.text = "Global Atmospheric CO\u{2082}"
+        label.textColor = #colorLiteral(red: 0.6622745241, green: 0.8905576081, blue: 0.9764705896, alpha: 1)
+        label.font = UIFont(name: "HelveticaNeue-BoldItalic", size: 20.0)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        addSubview(label)
+        lineChartView.frame = CGRect(x: 5, y: 35, width: bounds.width - 10, height: bounds.height)
         createDataSet()
-        
-        
+        lineChartView.alpha = 0.0
         addSubview(lineChartView)
         setChart()
-        //lineChartView.animate(xAxisDuration: 0.2, yAxisDuration: 0.2, easingOption: .linear)
-        
+        UIView  .animate(withDuration: 0.5, animations: {
+            self.lineChartView.alpha = 1.0
+            })
     }
-    
     func setChart() {
         
         var dataEntries: [ChartDataEntry] = []
@@ -34,7 +40,8 @@ class co2Chart: UIView
         for i in 0..<dataSet.count {
             let amount = Double(dataSet[i].amount)
             let year = Double(dataSet[i].year)
-            let dataEntry = ChartDataEntry(x: amount!, y: year!)
+            //let dataEntry = ChartDataEntry(x: amount!, y: year!)
+            let dataEntry = ChartDataEntry(x: year!, y: amount!)
             dataEntries.append(dataEntry)
         }
         
@@ -53,7 +60,7 @@ class co2Chart: UIView
         let pFormatter = NumberFormatter()
         pFormatter.numberStyle = .none
         pFormatter.maximumFractionDigits = 0
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Atmospheric Carbon Dioxide")
+        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "CO\u{2082} Parts Per Million")
         lineChartDataSet.colors = colors
         lineChartDataSet.circleRadius = 3.5
         lineChartDataSet.lineWidth = 4
@@ -68,15 +75,15 @@ class co2Chart: UIView
         lineChartData.setValueFormatter((DefaultValueFormatter(formatter: pFormatter)))
         lineChartView.chartDescription?.textAlign = .center
         lineChartView.data = lineChartData
-        lineChartView.legend.font = UIFont(name: "Helvetica", size: 15)!
-        lineChartView.legend.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        lineChartView.legend.horizontalAlignment = .left
+//        lineChartView.legend.font = UIFont(name: "Helvetica", size: 15)!
+//        lineChartView.legend.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//        lineChartView.legend.horizontalAlignment = .left
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.rightAxis.enabled = false
         lineChartView.leftAxis.drawGridLinesEnabled = false
-        
-        
+        lineChartView.legend.enabled = false
+        //lineChartView.setViewPortOffsets(left: 20, top: 20, right: 20, bottom: 20)
         
         
     }

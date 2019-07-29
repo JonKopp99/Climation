@@ -9,7 +9,7 @@
 import UIKit
 
 class ChartsVC: UIViewController {
-    
+    var co2View = co2Chart()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
@@ -22,13 +22,13 @@ class ChartsVC: UIViewController {
         self.view.layer.insertSublayer(ga, at:0)
         
         createNavBar()
-        let co2View = co2Chart()
-        co2View.frame = CGRect(x: 0, y: view.bounds.height * 0.1, width: view.bounds.width, height: view.bounds.height * 0.4)
-        self.view.addSubview(co2View)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        co2View = co2Chart()
+        co2View.frame = CGRect(x: 0, y: view.bounds.height * 0.1, width: view.bounds.width, height: view.bounds.height * 0.4)
+        self.view.addSubview(co2View)
     }
     
     func getGradientBackground() -> CAGradientLayer{
@@ -60,5 +60,9 @@ class ChartsVC: UIViewController {
         
         navView.addSubview(label)
         self.view.addSubview(navView)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        co2View.removeFromSuperview()
     }
 }

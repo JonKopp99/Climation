@@ -14,6 +14,7 @@
 		AB0EA55D22ECC5930090BB7B /* co2_annmean_gl.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB0EA55C22ECC5930090BB7B /* co2_annmean_gl.txt */; };
 		AB0EA55F22ECC67C0090BB7B /* co2Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA55E22ECC67C0090BB7B /* co2Chart.swift */; };
 		AB0EA56122EE0CCE0090BB7B /* co2_annmean_10year.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB0EA56022EE0CCE0090BB7B /* co2_annmean_10year.txt */; };
+		AB0EA56322F0E6B90090BB7B /* co2_annmean_gl5year.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB0EA56222F0E6B90090BB7B /* co2_annmean_gl5year.txt */; };
 		AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */; };
 		AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */; };
 		AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */; };
@@ -63,6 +64,7 @@
 		AB0EA55C22ECC5930090BB7B /* co2_annmean_gl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = co2_annmean_gl.txt; sourceTree = "<group>"; };
 		AB0EA55E22ECC67C0090BB7B /* co2Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = co2Chart.swift; sourceTree = "<group>"; };
 		AB0EA56022EE0CCE0090BB7B /* co2_annmean_10year.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = co2_annmean_10year.txt; sourceTree = "<group>"; };
+		AB0EA56222F0E6B90090BB7B /* co2_annmean_gl5year.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = co2_annmean_gl5year.txt; sourceTree = "<group>"; };
 		AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLDTABBAR.swift; sourceTree = "<group>"; };
 		AB7E2C7522DE33B400D749B0 /* Climation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				AB0EA55C22ECC5930090BB7B /* co2_annmean_gl.txt */,
 				AB0EA55E22ECC67C0090BB7B /* co2Chart.swift */,
 				AB0EA56022EE0CCE0090BB7B /* co2_annmean_10year.txt */,
+				AB0EA56222F0E6B90090BB7B /* co2_annmean_gl5year.txt */,
 			);
 			path = Datasets;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				AB7E2C8022DE33B600D749B0 /* Assets.xcassets in Resources */,
 				AB0EA56122EE0CCE0090BB7B /* co2_annmean_10year.txt in Resources */,
 				AB7E2C7E22DE33B400D749B0 /* Main.storyboard in Resources */,
+				AB0EA56322F0E6B90090BB7B /* co2_annmean_gl5year.txt in Resources */,
 				AB0EA55D22ECC5930090BB7B /* co2_annmean_gl.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ChartsVC: UIViewController {
-    var co2View = co2Chart()
+class ChartsVC: UIViewController,UIScrollViewDelegate {
+    var scrollView = UIScrollView()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
@@ -21,16 +21,46 @@ class ChartsVC: UIViewController {
         self.view.addSubview(backImage)
         self.view.layer.insertSublayer(ga, at:0)
         
+        
         createNavBar()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        co2View = co2Chart()
-        co2View.frame = CGRect(x: 0, y: view.bounds.height * 0.1, width: view.bounds.width, height: view.bounds.height * 0.4)
-        self.view.addSubview(co2View)
+    override func viewDidLayoutSubviews() {
+        var bottom = self.view.safeAreaInsets.bottom
+        if bottom == 0
+        {
+            bottom = 10
+        }
+        scrollView.frame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: 2000)//self.view.bounds.height - (50 + bottom + (self.view.bounds.height * 0.1)))
+        
+        scrollView.delegate = self
+        let co2View = co2Chart()
+        co2View.textFile = "co2_annmean_10year"
+        co2View.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View.loadVIew()
+        
+        scrollView.addSubview(co2View)
+        
+        let co2View2 = co2Chart()
+        co2View2.textFile = "co2_annmean_gl5year"
+        co2View2.frame = CGRect(x: 0, y: co2View.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View2.loadVIew()
+        
+        scrollView.addSubview(co2View2)
+        
+        let co2View3 = co2Chart()
+        co2View3.textFile = "co2_annmean_gl"
+        co2View3.frame = CGRect(x: 0, y: co2View2.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View3.loadVIew()
+        
+        scrollView.addSubview(co2View3)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: 2500)
+        self.view.addSubview(scrollView)
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        
+}
     func getGradientBackground() -> CAGradientLayer{
         let colorTop = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor
         let colorBottom = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor
@@ -63,6 +93,10 @@ class ChartsVC: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        co2View.removeFromSuperview()
+        for view in scrollView.subviews
+        {
+            view.removeFromSuperview()
+        }
+        scrollView.removeFromSuperview()
     }
 }

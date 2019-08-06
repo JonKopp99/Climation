@@ -18,11 +18,13 @@ struct ArticleOBJ: Codable{
     var author: String?
     var title: String?
     var description: String?
+    var url: String?
     var urlToImage: String?
     enum CodingKeys: String, CodingKey {
         case author
         case title
         case description
+        case url
         case urlToImage
     }
 }

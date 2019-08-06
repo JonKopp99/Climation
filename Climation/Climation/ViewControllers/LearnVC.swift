@@ -113,19 +113,36 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! HomeCell
-        print(cell.nameLabel.text!)
-        let vc = TopicVC()
-        vc.headerImage = cell.backImage.image!
-        vc.headerTitle = cell.nameLabel.text!
-        let animation = CATransition()
-        animation.type = .push
-        animation.subtype = .fromTop
-        animation.duration = 0.3
-        self.view.window!.layer.add(animation, forKey: nil)
-        
-        
-        self.present(vc, animated: false, completion: nil)
+//        let cell = tableView.cellForRow(at: indexPath) as! HomeCell
+//        print(cell.nameLabel.text!)
+//        let vc = TopicVC()
+//        vc.headerImage = cell.backImage.image!
+//        vc.headerTitle = cell.nameLabel.text!
+//        let animation = CATransition()
+//        animation.type = .push
+//        animation.subtype = .fromTop
+//        animation.duration = 0.3
+//        self.view.window!.layer.add(animation, forKey: nil)
+//
+//
+//        self.present(vc, animated: false, completion: nil)
+        if let url = articles?.articles[indexPath.row].url
+        {
+            print(url)
+            let webView = ArticleWebView()
+            let top = self.view.safeAreaInsets.top
+            webView.top = top
+            webView.url = url
+            var bottom = self.view.safeAreaInsets.bottom
+            if bottom == 0
+            {
+                bottom = 10
+            }
+            
+            webView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - (bottom + 50))
+            webView.loadView()
+            view.addSubview(webView)
+        }
    
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

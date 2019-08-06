@@ -36,21 +36,21 @@ class ChartsVC: UIViewController,UIScrollViewDelegate {
         scrollView.delegate = self
         let co2View = co2Chart()
         co2View.textFile = "co2_annmean_10year"
-        co2View.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height * 0.5)
         co2View.loadVIew()
         
         scrollView.addSubview(co2View)
         
         let co2View2 = co2Chart()
         co2View2.textFile = "co2_annmean_gl5year"
-        co2View2.frame = CGRect(x: 0, y: co2View.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View2.frame = CGRect(x: 0, y: co2View.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.5)
         co2View2.loadVIew()
         
         scrollView.addSubview(co2View2)
         
         let co2View3 = co2Chart()
         co2View3.textFile = "co2_annmean_gl"
-        co2View3.frame = CGRect(x: 0, y: co2View2.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.4)
+        co2View3.frame = CGRect(x: 0, y: co2View2.frame.maxY + 25, width: view.bounds.width, height: view.bounds.height * 0.5)
         co2View3.loadVIew()
         
         scrollView.addSubview(co2View3)

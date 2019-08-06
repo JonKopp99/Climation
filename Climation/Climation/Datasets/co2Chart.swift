@@ -94,7 +94,7 @@ class co2Chart: UIView, ChartViewDelegate
         }else{
             infoButton.setImage(#imageLiteral(resourceName: "icons8-info-50 (1)"), for: .normal)
             
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.2, animations: { 
                 self.descLabel.frame = CGRect(x:10, y: self.titlelabel.frame.maxY + 5, width: self.bounds.width - 20, height: 0)
                 
                 self.lineChartView.frame = CGRect(x: 15, y: 35, width: self.bounds.width - 30, height: self.bounds.height - 50)

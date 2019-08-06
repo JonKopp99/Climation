@@ -13,7 +13,8 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var hasAnimated = Bool()
     var tableView = UITableView()
     var topics = [HomeTopic]()
-    
+    var articles:Articles?
+    var articlesNetwork = NewsAPIFetcher()
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var bottom = self.view.safeAreaInsets.bottom
@@ -42,13 +43,23 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         self.view.addSubview(tableView)
-        tableView.reloadData()
+        
+        self.articlesNetwork.getArticles()
+         NotificationCenter.default.addObserver(self, selector: #selector(fetchedNews), name: NSNotification.Name(rawValue: "fetchedNews"), object: nil)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         dummyData()
         hasAnimated = false
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
+    }
+    
+    @objc func fetchedNews()
+    {
+        self.articles = articlesNetwork.articles
+        tableView.reloadData()
     }
     
     func createNavBar()
@@ -118,19 +129,56 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topics.count
+        if let count = self.articles?.articles.count
+        {
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let textCounnt = articles?.articles[indexPath.row].title
+        {
+            let height = (self.view.bounds.height)
+            let inc = CGFloat(calculateLineSize(str: textCounnt))
+            print("Height inc for row at ", indexPath.row, "is: ", inc)
+            return height * 0.2 + (inc * 50)
+        }
         return self.view.bounds.height * 0.2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = HomeCell()
         cell.selectionStyle = .none
-        cell.backImage.image = topics[indexPath.row].backImg
-        cell.nameLabel.text = topics[indexPath.row].name
+        //cell.backImage.image = topics[indexPath.row].backImg
+        if let url = articles?.articles[indexPath.row].urlToImage
+        {
+            cell.backImage.downloaded(from: url)
+        }
+        if let title = articles?.articles[indexPath.row].title
+        {
+            cell.nameLabel.numberOfLines = calculateLineSize(str: title)
+            cell.nameLabel.text = title
+            
+        }
+        //cell.nameLabel.text = topics[indexPath.row].name
         return cell
     }
+    
+    func calculateLineSize(str: String)->Int
+    {
+        let count = str.numberOfWords
+        if count / 6 != 0
+        {
+            var amount = count / 6
+            if(count % 6 != 0)
+            {
+                amount += 1
+            }
+            return amount
+        }
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cell = cell as! HomeCell
         if(hasAnimated){return}
@@ -146,11 +194,18 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         })
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if(indexPath.row == topics.count - 1)
+        if let count = self.articles?.articles.count
         {
+            if(indexPath.row == count - 1)
+            {
+                hasAnimated = true
+            }
+        }else{
             hasAnimated = true
         }
-    }
+        
+        }
+        
     override func viewDidDisappear(_ animated: Bool) {
         topics = [HomeTopic]()
         tableView.reloadData()

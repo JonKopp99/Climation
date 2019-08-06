@@ -41,6 +41,7 @@ class HomeCell: UITableViewCell{
         addSubview(backImage)
         
         nameLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        //nameLabel.numberOfLines = nameLabel.text!.numberOfWords / 6
         nameLabel.font = UIFont(name: "Helvetica-Bold", size: 50.0)
         nameLabel.textAlignment = .center
         nameLabel.textColor = .white

@@ -33,7 +33,7 @@ class TabBar: UIViewController
         super.viewDidLoad()
         print("Tab Bar was loaded")
         
-        buttonContainer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.8)
+        buttonContainer.backgroundColor = #colorLiteral(red: 1, green: 0.9128649964, blue: 0.9141450154, alpha: 1).withAlphaComponent(0.95)
         buttonContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         buttonContainer.layer.cornerRadius = 20
         //Middle Buttons

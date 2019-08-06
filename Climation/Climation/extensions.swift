@@ -42,6 +42,28 @@ extension UIImage {
     }
 }
 
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "imageDownloaded"), object: nil)
+            }
+            }.resume()
+    }
+    
+    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
+}
 extension UIView {
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
@@ -49,6 +71,22 @@ extension UIView {
         animation.duration = 0.6
         animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
         layer.add(animation, forKey: "shake")
+    }
+}
+extension String {
+    var numberOfWords: Int {
+        let inputRange = CFRangeMake(0, utf16.count)
+        let flag = UInt(kCFStringTokenizerUnitWord)
+        let locale = CFLocaleCopyCurrent()
+        let tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, self as CFString, inputRange, flag, locale)
+        var tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer)
+        var count = 0
+        
+        while tokenType != [] {
+            count += 1
+            tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer)
+        }
+        return count
     }
 }
 

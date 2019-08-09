@@ -15,7 +15,7 @@ class NewsAPIFetcher
     var articles:Articles?
     func getArticles()
     {
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=climate_change&from=2019-07-06&sortBy=publishedAt&apiKey=2f14afa396d145efb9525f59e93c9c57")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=climate_change&from=2019-07-07&sortBy=publishedAt&apiKey=2f14afa396d145efb9525f59e93c9c57")!)
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
@@ -49,6 +49,15 @@ class NewsAPIFetcher
         self.articles?.articles = newAr
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedNews"), object: nil)
 
+    }
+    func checkhttp(str: String)-> String
+    {
+       // let firstFive = //
+//        if firstFive == "https"
+//        {
+//            return str
+//        }
+        return ""
     }
 }
 

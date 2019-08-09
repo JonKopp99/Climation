@@ -21,7 +21,7 @@ class ArticleWebView: UIView
         
         backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         let b = UIButton()
-        b.frame = CGRect(x: 15, y: top, width: 20, height: 20)
+        b.frame = CGRect(x: 15, y: top + 2.5, width: 15, height: 15)
         b.setImage(#imageLiteral(resourceName: "icons8-x-50").mask(with: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), for: .normal)
         b.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         addSubview(b)

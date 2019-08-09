@@ -113,19 +113,10 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath) as! HomeCell
-//        print(cell.nameLabel.text!)
-//        let vc = TopicVC()
-//        vc.headerImage = cell.backImage.image!
-//        vc.headerTitle = cell.nameLabel.text!
-//        let animation = CATransition()
-//        animation.type = .push
-//        animation.subtype = .fromTop
-//        animation.duration = 0.3
-//        self.view.window!.layer.add(animation, forKey: nil)
-//
-//
-//        self.present(vc, animated: false, completion: nil)
+        if let imgURL = articles?.articles[indexPath.row].urlToImage
+        {
+            print("Image URL: ",imgURL)
+        }
         if let url = articles?.articles[indexPath.row].url
         {
             print(url)
@@ -139,9 +130,11 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 bottom = 10
             }
             
-            webView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - (bottom + 50))
+            webView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            //webView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - (bottom + 50))
             webView.loadView()
-            view.addSubview(webView)
+            //view.addSubview(webView)
+            parent?.view.addSubview(webView)
         }
    
     }

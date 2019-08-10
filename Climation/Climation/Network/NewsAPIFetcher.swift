@@ -15,7 +15,7 @@ class NewsAPIFetcher
     var articles:Articles?
     func getArticles()
     {
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=climate_change&from=2019-07-07&sortBy=publishedAt&apiKey=2f14afa396d145efb9525f59e93c9c57")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=climate_change&from=2019-07-10&sortBy=publishedAt&apiKey=2f14afa396d145efb9525f59e93c9c57")!)
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
@@ -43,7 +43,13 @@ class NewsAPIFetcher
         {
             if article.urlToImage != nil
             {
-                newAr.append(article)
+                let imgLink = checkhttp(str: article.urlToImage!)
+                if(imgLink == article.urlToImage)
+                {
+                   newAr.append(article)
+                }
+                
+                
             }
         }
         self.articles?.articles = newAr
@@ -52,12 +58,15 @@ class NewsAPIFetcher
     }
     func checkhttp(str: String)-> String
     {
-       // let firstFive = //
-//        if firstFive == "https"
-//        {
-//            return str
-//        }
-        return ""
+        let firstFive = str.dropLast(str.count - 5)
+        if firstFive == "https"
+        {
+            return str
+        }else{
+            print("NEWSTRINGTEST: ", "https", str.dropFirst(4))
+            return "https\(str.dropFirst(4))"
+        }
+        return str
     }
 }
 

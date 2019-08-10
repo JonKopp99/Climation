@@ -22,8 +22,8 @@ class HomeCell: UITableViewCell{
             var frame =  newFrame
             frame.origin.y += 4
             frame.size.height -= 10
-            frame.size.width -= 40
-            frame.origin.x += 20
+            frame.size.width -= 20
+            frame.origin.x += 10
             super.frame = frame
         }
     }
@@ -33,7 +33,7 @@ class HomeCell: UITableViewCell{
         backgroundColor = .clear
         
         backImage.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        backImage.layer.cornerRadius = self.frame.height * 0.15
+        backImage.layer.cornerRadius = self.frame.height * 0.05
         backImage.layer.masksToBounds = true
         backImage.clipsToBounds = true
         backImage.contentMode = .scaleAspectFill

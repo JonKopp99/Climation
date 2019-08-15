@@ -206,7 +206,7 @@ class LearnVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let count = self.articles?.articles.count
         {
-            if(indexPath.row == count - 1)
+            if(indexPath.row >= 5)
             {
                 hasAnimated = true
             }

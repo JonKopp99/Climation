@@ -5,3 +5,4 @@ The first step to making an impactful difference with climate change is to educa
 
 ## Ideas
 
+Reward incentive for users to earn points as they learn more.

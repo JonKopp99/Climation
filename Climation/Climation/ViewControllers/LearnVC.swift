@@ -8,23 +8,24 @@
 
 import UIKit
 
-class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
    
     var hasAnimated = Bool()
     var topics = [HomeTopic]()
     var articles:Articles?
     var articlesNetwork = NewsAPIFetcher()
-    var collectionView = UICollectionView()
+    var collectionView: UICollectionView!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var bottom = self.view.safeAreaInsets.bottom
         if bottom == 0
         {
             bottom = 10
+            
         }
-        collectionView.frame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: self.view.bounds.height - (50 + bottom + (self.view.bounds.height * 0.1)))
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "homeCell")
+        setUpCollectionview(bottom: bottom)
+       
     }
     
     override func viewDidLoad() {
@@ -49,6 +50,21 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     override func viewDidAppear(_ animated: Bool) {
         hasAnimated = false
         self.collectionView.reloadData()
+    }
+    
+    func setUpCollectionview(bottom: CGFloat){
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        let collectionFrame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: self.view.bounds.height - (50 + bottom + (self.view.bounds.height * 0.1)))
+        
+        collectionView = UICollectionView(frame: collectionFrame, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "homeCell")
+        view.addSubview(collectionView)
     }
     
     @objc func fetchedNews()
@@ -111,16 +127,22 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         
         return 1
     }
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if let count = self.articles?.articles.count
+        {
+                    return count
+        }
+                return 0
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCell
         
             //cell.backImage.image = topics[indexPath.row].backImg
-            if let url = articles?.articles[indexPath.row].urlToImage
+            if let url = articles?.articles[indexPath.section].urlToImage
             {
                     cell.backImage.downloaded(from: url)
             }
-            if let title = articles?.articles[indexPath.row].title
+            if let title = articles?.articles[indexPath.section].title
             {
                 cell.nameLabel.numberOfLines = calculateLineSize(str: title)
                 cell.nameLabel.text = title
@@ -129,6 +151,17 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var height = self.view.bounds.height * 0.2
+        if let textCounnt = articles?.articles[indexPath.section].title
+        {
+            let viewheight = (self.view.bounds.height)
+            let inc = CGFloat(calculateLineSize(str: textCounnt))
+            print("Height inc for row at ", indexPath.section, "is: ", inc)
+            height =  viewheight * 0.2 + (inc * 50)
+        }
+        return CGSize(width: self.view.bounds.width, height: height)
+    }
     
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -158,11 +191,7 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 //
 //    }
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let count = self.articles?.articles.count
-//        {
-//            return count
-//        }
-//        return 0
+//
 //    }
 //
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

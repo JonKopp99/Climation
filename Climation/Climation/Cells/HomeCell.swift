@@ -66,6 +66,15 @@ class HomeCell: UICollectionViewCell{
         super.awakeFromNib()
         // Initialization code
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.reset()
+    }
+    
+    func reset() {
+        self.backImage = UIImageView()
+        self.nameLabel = UILabel()
+    }
     
     
 }

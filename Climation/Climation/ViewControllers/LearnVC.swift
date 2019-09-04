@@ -54,7 +54,7 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     func setUpCollectionview(bottom: CGFloat){
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 7, left: 5, bottom: 7, right: 5)
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         let collectionFrame = CGRect(x: 0, y: self.view.bounds.height * 0.1, width: self.view.bounds.width, height: self.view.bounds.height - (50 + bottom + (self.view.bounds.height * 0.1)))
@@ -64,6 +64,7 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "homeCell")
+        collectionView.register(EmptyCell.self, forCellWithReuseIdentifier: "emptyCell")
         view.addSubview(collectionView)
     }
     
@@ -125,45 +126,93 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1
+        return 2
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let count = self.articles?.articles.count
         {
-                    return count
-        }
-                return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCell
-        
-            //cell.backImage.image = topics[indexPath.row].backImg
-            if let url = articles?.articles[indexPath.section].urlToImage
+            if(count % 2 != 0)
             {
-                    cell.backImage.downloaded(from: url)
+                return count / 2 + 1
             }
-            if let title = articles?.articles[indexPath.section].title
+            return count / 2
+        }
+            return 0
+    }
+    //Tag will correspond to arrayItem
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let tag = indexPath.section * 2 + indexPath.row
+        if(tag >= (articles?.articles.count)!)
+        {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCell
+        }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCell
+            cell.id = tag
+            //cell.backImage.image = topics[indexPath.row].backImg
+            if let url = articles?.articles[tag].urlToImage
             {
-                cell.nameLabel.numberOfLines = calculateLineSize(str: title)
+                cell.backImage.downloaded(from: url)
+                cell.backImage.contentMode = .scaleToFill
+            }
+            if let title = articles?.articles[tag].title
+            {
+                //cell.nameLabel.numberOfLines = calculateLineSize(str: title)
                 cell.nameLabel.text = title
+                cell.nameLabel.numberOfLines = 0
+                cell.nameLabel.sizeToFit()
             }
                 //cell.nameLabel.text = topics[indexPath.row].name
                 return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var height = self.view.bounds.height * 0.2
-        if let textCounnt = articles?.articles[indexPath.section].title
-        {
-            let viewheight = (self.view.bounds.height)
-            let inc = CGFloat(calculateLineSize(str: textCounnt))
-            print("Height inc for row at ", indexPath.section, "is: ", inc)
-            height =  viewheight * 0.2 + (inc * 50)
-        }
-        return CGSize(width: self.view.bounds.width, height: height)
+        return CGSize(width: self.view.bounds.width / 2 - 10, height: self.view.bounds.height * 0.3)
     }
     
-    
+        func calculateLineSize(str: String)->Int
+        {
+            let count = str.numberOfWords
+            if count / 6 != 0
+            {
+                var amount = count / 6
+                if(count % 6 != 0)
+                {
+                    amount += 2
+                }
+                return amount
+            }
+            return 1
+        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let imgURL = articles?.articles[getCellID(indexPath: indexPath)].urlToImage
+            {
+                print("Index path: ",indexPath)
+            }
+        if let url = articles?.articles[getCellID(indexPath: indexPath)].url
+            {
+                print(url)
+                let webView = ArticleWebView()
+                let top = self.view.safeAreaInsets.top
+                webView.top = top
+                webView.url = url
+                var bottom = self.view.safeAreaInsets.bottom
+                if bottom == 0
+                {
+                    bottom = 10
+                }
+        
+                webView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+                webView.loadView()
+                parent?.view.addSubview(webView)
+                }
+        
+    }
+    func getCellID(indexPath: IndexPath)->Int
+    {
+        guard let cell = self.collectionView.cellForItem(at: indexPath) as! HomeCell?
+            else{return 0}
+        return cell.id
+    }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if let imgURL = articles?.articles[indexPath.row].urlToImage
 //        {
@@ -221,21 +270,6 @@ class LearnVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 //        //cell.nameLabel.text = topics[indexPath.row].name
 //        return cell
 //    }
-    
-    func calculateLineSize(str: String)->Int
-    {
-        let count = str.numberOfWords
-        if count / 6 != 0
-        {
-            var amount = count / 6
-            if(count % 6 != 0)
-            {
-                amount += 1
-            }
-            return amount
-        }
-        return 1
-    }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        let cell = cell as! HomeCell

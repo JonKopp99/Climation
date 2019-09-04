@@ -10,10 +10,11 @@
 
 import UIKit
 import Foundation
-class HomeCell: UITableViewCell{
+class HomeCell: UICollectionViewCell{
     
     var backImage = UIImageView()
     var nameLabel = UILabel()
+    
     override var frame: CGRect {
         get {
             return super.frame
@@ -26,6 +27,9 @@ class HomeCell: UITableViewCell{
             frame.origin.x += 10
             super.frame = frame
         }
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     override func layoutSubviews() {
@@ -52,12 +56,10 @@ class HomeCell: UITableViewCell{
         
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
+
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
@@ -65,11 +67,6 @@ class HomeCell: UITableViewCell{
         // Initialization code
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
 }
 

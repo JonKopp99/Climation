@@ -19,6 +19,8 @@
 		AB0EA5AA22F9F0080090BB7B /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA5A922F9F0080090BB7B /* NetworkModels.swift */; };
 		AB0EA5AC22F9F1510090BB7B /* oldLearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA5AB22F9F1510090BB7B /* oldLearnVC.swift */; };
 		AB0EA5AF22FA16AA0090BB7B /* ArticleWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA5AE22FA16AA0090BB7B /* ArticleWebView.swift */; };
+		AB0EA63A231F1CDD0090BB7B /* toDO in Resources */ = {isa = PBXBuildFile; fileRef = AB0EA639231F1CDD0090BB7B /* toDO */; };
+		AB0EA63C231F46820090BB7B /* oldLearnVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0EA63B231F46820090BB7B /* oldLearnVC2.swift */; };
 		AB21982B22E786A0004CBC80 /* OLDTABBAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */; };
 		AB7E2C7922DE33B400D749B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */; };
 		AB7E2C7B22DE33B400D749B0 /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */; };
@@ -73,6 +75,8 @@
 		AB0EA5A922F9F0080090BB7B /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
 		AB0EA5AB22F9F1510090BB7B /* oldLearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oldLearnVC.swift; sourceTree = "<group>"; };
 		AB0EA5AE22FA16AA0090BB7B /* ArticleWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebView.swift; sourceTree = "<group>"; };
+		AB0EA639231F1CDD0090BB7B /* toDO */ = {isa = PBXFileReference; lastKnownFileType = text; path = toDO; sourceTree = "<group>"; };
+		AB0EA63B231F46820090BB7B /* oldLearnVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oldLearnVC2.swift; sourceTree = "<group>"; };
 		AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLDTABBAR.swift; sourceTree = "<group>"; };
 		AB7E2C7522DE33B400D749B0 /* Climation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Climation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7E2C7822DE33B400D749B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				AB7E2CA822DE388400D749B0 /* extensions.swift */,
 				AB7E2CBB22E0F35500D749B0 /* CustomClasses.swift */,
 				AB21982A22E786A0004CBC80 /* OLDTABBAR.swift */,
+				AB0EA639231F1CDD0090BB7B /* toDO */,
 			);
 			path = Climation;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			children = (
 				AB7E2CA622DE33EC00D749B0 /* TabBar.swift */,
 				AB7E2C7A22DE33B400D749B0 /* LearnVC.swift */,
+				AB0EA63B231F46820090BB7B /* oldLearnVC2.swift */,
 				AB7E2CB722E0D55E00D749B0 /* TopicVC.swift */,
 				AB7E2CAB22DE59B700D749B0 /* LikesVC.swift */,
 				AB7E2CAD22DE59C300D749B0 /* ChartsVC.swift */,
@@ -386,6 +392,7 @@
 				AB0EA56122EE0CCE0090BB7B /* co2_annmean_10year.txt in Resources */,
 				AB7E2C7E22DE33B400D749B0 /* Main.storyboard in Resources */,
 				AB0EA56322F0E6B90090BB7B /* co2_annmean_gl5year.txt in Resources */,
+				AB0EA63A231F1CDD0090BB7B /* toDO in Resources */,
 				AB0EA55D22ECC5930090BB7B /* co2_annmean_gl.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +508,7 @@
 				AB7E2CB622DFAC4E00D749B0 /* HomeTopic.swift in Sources */,
 				AB7E2CBA22E0D5D900D749B0 /* TopicCell.swift in Sources */,
 				AB7E2CAC22DE59B700D749B0 /* LikesVC.swift in Sources */,
+				AB0EA63C231F46820090BB7B /* oldLearnVC2.swift in Sources */,
 				AB7E2CAE22DE59C300D749B0 /* ChartsVC.swift in Sources */,
 				AB7E2CB222DF905A00D749B0 /* HomeCell.swift in Sources */,
 				AB7E2CA722DE33EC00D749B0 /* TabBar.swift in Sources */,
